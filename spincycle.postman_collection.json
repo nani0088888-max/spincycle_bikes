@@ -1,0 +1,38 @@
+{
+  "info": {
+    "_postman_id": "7c84f71a-1c11-4dd4-8c47-0e7d4a1d3a91",
+    "name": "SpinCycle Bikes API",
+    "description": "Postman requests for the SpinCycle Bikes group assignment.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [{ "key": "baseUrl", "value": "http://localhost:3000" }],
+  "item": [
+    {
+      "name": "Bikes",
+      "item": [
+        { "name": "Get all bikes", "request": { "method": "GET", "url": "{{baseUrl}}/bikes" } },
+        { "name": "Get bike 1", "request": { "method": "GET", "url": "{{baseUrl}}/bikes/1" } },
+        { "name": "Add bike", "request": { "method": "POST", "header": [{ "key": "Content-Type", "value": "application/json" }], "body": { "mode": "raw", "raw": "{\n  \"name\": \"Blue Comet\",\n  \"type\": \"Road\"\n}" }, "url": "{{baseUrl}}/bikes" } },
+        { "name": "Update bike 1", "request": { "method": "PUT", "header": [{ "key": "Content-Type", "value": "application/json" }], "body": { "mode": "raw", "raw": "{\n  \"name\": \"Blue Comet Pro\",\n  \"type\": \"Mountain\",\n  \"status\": \"available\"\n}" }, "url": "{{baseUrl}}/bikes/1" } },
+        { "name": "Search bikes by type", "request": { "method": "GET", "url": "{{baseUrl}}/bikes?type=Road" } },
+        { "name": "Summary by type", "request": { "method": "GET", "url": "{{baseUrl}}/bikes/summary" } },
+        { "name": "Delete bike 1", "request": { "method": "DELETE", "url": "{{baseUrl}}/bikes/1" } }
+      ]
+    },
+    {
+      "name": "Riders",
+      "item": [
+        { "name": "Get all riders", "request": { "method": "GET", "url": "{{baseUrl}}/riders" } },
+        { "name": "Add rider", "request": { "method": "POST", "header": [{ "key": "Content-Type", "value": "application/json" }], "body": { "mode": "raw", "raw": "{\n  \"name\": \"Aarav Sharma\",\n  \"email\": \"aarav@example.com\",\n  \"phone\": \"9876543210\"\n}" }, "url": "{{baseUrl}}/riders" } }
+      ]
+    },
+    {
+      "name": "Rentals",
+      "item": [
+        { "name": "Create rental", "request": { "method": "POST", "header": [{ "key": "Content-Type", "value": "application/json" }], "body": { "mode": "raw", "raw": "{\n  \"rider_id\": 1,\n  \"bike_id\": 1\n}" }, "url": "{{baseUrl}}/rentals" } },
+        { "name": "Get rentals with rider and bike names (JOIN)", "request": { "method": "GET", "url": "{{baseUrl}}/rentals/join" } },
+        { "name": "Return rental 1", "request": { "method": "PATCH", "url": "{{baseUrl}}/rentals/1/return" } }
+      ]
+    }
+  ]
+}
